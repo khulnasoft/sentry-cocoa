@@ -5,6 +5,7 @@ import Sentry
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+
         // Insert code here to initialize your application
         SentrySDK.start { options in
             options.dsn = "https://6cc9bae94def43cab8444a99e0031c28@o447951.ingest.sentry.io/5428557"
@@ -12,23 +13,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             options.tracesSampleRate = 1.0
             
             let args = ProcessInfo.processInfo.arguments
-
-            // Set the profilesSampleRate to `nil` to enable the configureProfiling block
-            options.profilesSampleRate = nil
-            options.configureProfiling = {
-                $0.profileAppStarts = ProcessInfo.processInfo.arguments.contains("--io.sentry.enable-profile-app-starts")
-                $0.sessionSampleRate = 1
+            
+            if args.contains("--io.sentry.profiling.enable") {
+                options.profilesSampleRate = 1
             }
-
-            if args.contains("--disable-auto-performance-tracing") {
-                options.enableAutoPerformanceTracing = false
-            }
-
             if #available(macOS 12.0, *), !args.contains("--disable-metrickit-integration") {
                 options.enableMetricKit = true
                 options.enableMetricKitRawPayload = true
             }
-
+            
             options.initialScope = { scope in
                 if let path = Bundle.main.path(forResource: "Tongariro", ofType: "jpg") {
                     scope.addAttachment(Attachment(path: path, filename: "Tongariro.jpg", contentType: "image/jpeg"))

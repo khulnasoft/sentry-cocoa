@@ -44,6 +44,14 @@
                BlueprintName = "iOS-Swift-UITests"
                ReferencedContainer = "container:iOS-Swift.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "SentryFileIOTrackingIntegrationTests/test_DataConsistency_readPath_disabled()">
+               </Test>
+               <Test
+                  Identifier = "SentryFileIOTrackingIntegrationTests/test_DataConsistency_readUrl_disabled()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>
@@ -71,10 +79,6 @@
          <CommandLineArgument
             argument = "--io.sentry.disable-everything"
             isEnabled = "NO">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "--io.sentry.ui-test.use-custom-feedback-button"
-            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--io.sentry.disable-ui-profiling"
@@ -146,7 +150,7 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--io.sentry.feedback.all-defaults"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--skip-sentry-init"

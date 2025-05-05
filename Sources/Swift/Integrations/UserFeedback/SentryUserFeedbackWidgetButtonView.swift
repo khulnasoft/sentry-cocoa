@@ -13,18 +13,16 @@ class SentryUserFeedbackWidgetButtonView: UIView {
     // MARK: Properties
     
     lazy var tapGesture = UITapGestureRecognizer(target: self, action: #selector(buttonPressed))
-    let target: AnyObject
-    let selector: Selector
+    let action: (SentryUserFeedbackWidgetButtonView) -> Void
     let config: SentryUserFeedbackConfiguration
     lazy var megaphone = SentryUserFeedbackWidgetButtonMegaphoneIconView(config: config)
     
     // MARK: Initialization
     
     //swiftlint:disable function_body_length
-    init(config: SentryUserFeedbackConfiguration, target: AnyObject, selector: Selector) {
+    init(config: SentryUserFeedbackConfiguration, action: @escaping (SentryUserFeedbackWidgetButtonView) -> Void) {
+        self.action = action
         self.config = config
-        self.target = target
-        self.selector = selector
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         isAccessibilityElement = true
@@ -103,7 +101,7 @@ class SentryUserFeedbackWidgetButtonView: UIView {
     // MARK: Actions
     
     @objc func buttonPressed() {
-        let _ = target.perform(selector)
+        self.action(self)
     }
     
     // MARK: UI Elements

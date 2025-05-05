@@ -11,7 +11,10 @@
   "defaultOptions" : {
     "codeCoverage" : false,
     "commandLineArgumentEntries" : [
-
+      {
+        "argument" : "--io.sentry.profiling.enable",
+        "enabled" : false
+      }
     ],
     "targetForVariableExpansion" : {
       "containerPath" : "container:iOS-Swift.xcodeproj",

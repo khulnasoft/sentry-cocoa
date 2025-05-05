@@ -7,7 +7,8 @@
 
 set -euo pipefail
 
-XCODE_VERSION="${1}"
+# 14.3 is the default
+XCODE_VERSION="${1:-14.3}"
 
 # We prefer this over calling `sudo xcode-select` because it will fail if the Xcode version
 # is not installed. Also xcodes is preinstalled on the GH runners.

@@ -6,14 +6,14 @@ public class PreviewRedactOptions: SentryRedactOptions {
     public let maskAllImages: Bool
     public let maskedViewClasses: [AnyClass]
     public let unmaskedViewClasses: [AnyClass]
-    public let enableViewRendererV2: Bool
+    public let enableExperimentalViewRenderer: Bool
 
-    public init(maskAllText: Bool = true, maskAllImages: Bool = true, maskedViewClasses: [AnyClass] = [], unmaskedViewClasses: [AnyClass] = [], enableViewRendererV2: Bool = false) {
+    public init(maskAllText: Bool = true, maskAllImages: Bool = true, maskedViewClasses: [AnyClass] = [], unmaskedViewClasses: [AnyClass] = [], enableExperimentalViewRenderer: Bool = false) {
         self.maskAllText = maskAllText
         self.maskAllImages = maskAllImages
         self.maskedViewClasses = maskedViewClasses
         self.unmaskedViewClasses = unmaskedViewClasses
-        self.enableViewRendererV2 = enableViewRendererV2
+        self.enableExperimentalViewRenderer = enableExperimentalViewRenderer
     }
 }
 

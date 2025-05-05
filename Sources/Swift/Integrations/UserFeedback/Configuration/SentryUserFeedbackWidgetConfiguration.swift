@@ -10,7 +10,9 @@ import UIKit
 @objcMembers
 public class SentryUserFeedbackWidgetConfiguration: NSObject {
     /**
-     * Automatically inject the widget button into the application UI.
+     * Injects the Feedback widget into the application UI when the integration is added. Set to `false`
+     * if you want to call `attachToButton()` or `createWidget()` directly, or only want to show the
+     * widget on certain views.
      * - note: Default: `true`
      */
     public var autoInject: Bool = true
@@ -18,8 +20,7 @@ public class SentryUserFeedbackWidgetConfiguration: NSObject {
     let defaultLabelText = "Report a Bug"
     
     /**
-     * The label of the injected button that opens up the feedback form when clicked. If `nil`, no
-     * text is displayed and only the icon image is shown.
+     * The label of the injected button that opens up the feedback form when clicked. If `nil`, no text is displayed and only the icon image is shown.
      * - note: Default: `"Report a Bug"`
      */
     public lazy var labelText: String? = defaultLabelText

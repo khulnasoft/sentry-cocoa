@@ -14,9 +14,3 @@ extension SentryReplayType {
         }
     }
 }
-
-extension SentryReplayType: CustomStringConvertible {
-    var description: String {
-        return toString()
-    }
-}
